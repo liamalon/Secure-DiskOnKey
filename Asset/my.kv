@@ -1,0 +1,432 @@
+#:import utils kivy.utils
+
+<CreateAccountWindow>:
+    name: "create"
+
+    namee: namee
+    email: email
+    password: passw
+
+    FloatLayout:
+        cols:1
+        
+        canvas:
+            Color:
+                rgb: utils.get_color_from_hex('#DAF7A6')
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+        FloatLayout:
+            size: root.width, root.height/2
+
+            Label:
+                text: "Create an Account"
+                size_hint: 0.8, 0.2
+                pos_hint: {"x":0.1, "top":1}
+                font_size: (root.width**2 + root.height**2) / 13**4
+                color: "#581845"
+                font_name:"txt_font"
+            Label:
+                size_hint: 0.5,0.12
+                pos_hint: {"x":0, "top":0.75}
+                text: "Name: "
+                font_size: (root.width**2 + root.height**2) / 13**4
+                color: "#900C3F"
+                font_name:"txt_font"
+
+            TextInput:
+                id: namee
+                font_size: (root.width**2 + root.height**2) / 14**4
+                multiline: False
+                padding_y:(10,10)
+                pos_hint: {"x": 0.35 , "top":0.73}
+                size_hint: 0.5, 0.08
+                font_name:"txt_font"
+                cursor_color: "#581845"
+                background_color: '#DAF7A6'
+                background_normal: ""
+
+            Label:
+                size_hint: 0.5,0.12
+                pos_hint: {"x":0, "top":0.75-0.13}
+                text: "Email: "
+                font_size: (root.width**2 + root.height**2) / 13**4
+                color: "#900C3F"
+                font_name:"txt_font"
+
+            TextInput:
+                id: email
+                font_size: (root.width**2 + root.height**2) / 14**4
+                multiline: False
+                padding_y:(10,10)
+                pos_hint: {"x": 0.35 , "top":0.73-0.13}
+                size_hint: 0.5, 0.08
+                font_name:"txt_font"
+                cursor_color: "#581845"
+                background_color: '#DAF7A6'
+                background_normal: ""
+
+            Label:
+                size_hint: 0.5,0.12
+                pos_hint: {"x":0, "top":0.75-0.13*2}
+                text: "Password: "
+                font_size: (root.width**2 + root.height**2) / 13**4
+                color: "#900C3F"
+                font_name:"txt_font"
+
+            TextInput:
+                id: passw
+                font_size: (root.width**2 + root.height**2) / 14**4
+                multiline: False
+                padding_y:(10,10)
+                password:True
+                pos_hint: {"x": 0.35 , "top":0.73-0.13*2}
+                size_hint: 0.5, 0.08
+                font_name:"txt_font"
+                cursor_color: "#581845"
+                background_color: '#DAF7A6'
+                background_normal: ""
+
+        Button:
+            pos_hint:{"x":0.25,"y":0.2}
+            size_hint: 0.5, 0.1
+            font_size: 28
+            font_name:"txt_font"
+            text: "Already have an Account? Log In"
+            color: "#581845"
+            background_color: '#DAF7A6'
+            background_normal: ""
+            on_release:
+                root.manager.transition.direction = "left"
+                root.login()
+
+        Button:
+            pos_hint:{"x":0.4,"y":0.075}
+            size_hint: 0.15, 0.075
+            text: "Submit"
+            font_size: 28
+            font_name:"txt_font"
+            color: "#581845"
+            background_color: '#DAF7A6'
+            background_normal: ""
+            on_release:
+                root.manager.transition.direction = "left"
+                root.submit()
+
+
+<LoginWindow>:
+    name: "login"
+
+    email: email
+    password: password
+
+    FloatLayout:
+
+        canvas:
+            Color:
+                rgb: utils.get_color_from_hex('#DAF7A6')
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+        #AsyncImage:
+        #    source: 'D:\\DiskOnKeyProj\\br.png'
+        #    pos: self.pos
+        #    size: root.size
+        #    allow_stretch: True
+        #    keep_ratio: False
+            
+        Label:
+            ### Title Label ###
+            text:"My Secure Disk "
+            font_size: (root.width**2 + root.height**2) / 13**4
+            pos_hint: {"center_x":0.5, "center_y":0.9}
+            size_hint: 0.8, 0.8
+            color: "#581845"
+            font_name:"txt_font"
+
+        Label:
+            ### Email Label ###
+            text:"Email: "
+            font_size: (root.width**2 + root.height**2) / 13**4
+            size_hint: 0.2, 0.15
+            pos_hint: {"x":0.2, "top":0.7}
+            color: "#900C3F"
+            font_name:"txt_font"
+
+        TextInput:
+            ### Email Input Box ###
+            id: email
+            font_size: (root.width**2 + root.height**2) / 14**4
+            multiline: False
+            padding_y:(10,10)
+            pos_hint: {"x": 0.4 , "top":0.665}
+            size_hint: 0.5, 0.08
+            font_name:"txt_font"
+            cursor_color: "#581845"
+            background_color: '#DAF7A6'
+            background_normal: ""
+
+        Label:
+            ### Password Label ###
+            text:"Password: "
+            font_size: (root.width**2 + root.height**2) / 13**4
+            pos_hint: {"x":0.19, "top":0.5}
+            size_hint: 0.2, 0.15
+            color:"#900C3F"
+            font_name:"txt_font"
+
+        TextInput:
+            ### Password Input Box ###
+            id: password
+            font_size: (root.width**2 + root.height**2) / 14**4
+            multiline: False
+            padding_y:(10,10)
+            password:True
+            pos_hint: {"x": 0.4 , "top":0.465}
+            size_hint: 0.5, 0.08
+            font_name:"txt_font"
+            cursor_color: "#581845"
+            background_color: '#DAF7A6'
+            background_normal: ""
+
+        Button:
+            ### Login Button ###
+            pos_hint:{"center_x":0.5,"y":0.1}
+            size_hint: 0.2, 0.05
+            font_size: 28
+            font_name:"txt_font"
+            text: "Login"
+            color: "#581845"
+            background_color: '#DAF7A6'
+            background_normal: ""
+            on_release:
+                root.manager.transition.direction = "up"
+                root.loginBtn()
+
+        Button:
+             ### Login Button ###
+            pos_hint:{"center_x":0.5,"y":0.2}
+            size_hint: 0.5, 0.05
+            font_size: 22
+            font_name:"txt_font"
+            text: "Don't have an Account? Create One"
+            color: "#581845"
+            background_color: '#DAF7A6'
+            background_normal: ""
+            
+            on_release:
+                root.manager.transition.direction = "right"
+                root.createBtn()
+
+
+<MainWindow>:
+    n: n
+    email: email
+    created:created
+
+    FloatLayout:
+        canvas:
+            Color:
+                rgb: utils.get_color_from_hex('#DAF7A6')
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        Label:
+            id: n   
+            pos_hint:{"x": 0.1, "top":1}
+            size_hint:0.8, 0.2
+            text: "Account Details"
+            color:"#581845"
+            font_name:"txt_font"
+            font_size: (root.width**2 + root.height**2) / 12**4
+
+        Label:
+            id: n
+            pos_hint:{"x": 0.1, "top":0.9}
+            size_hint:0.8, 0.2
+            font_size: (root.width**2 + root.height**2) / 14**4
+            text: "Account Name: "
+            color:"#900C3F"
+            font_name:"txt_font"
+            
+
+        Label:
+            id: email
+            pos_hint:{"x": 0.1, "top":0.8}
+            size_hint:0.8, 0.2
+            text: "Email: "
+            color:"#900C3F"
+            font_name:"txt_font"
+            font_size: (root.width**2 + root.height**2) / 14**4
+
+        Label:
+            id: created
+            pos_hint:{"x": 0.1, "top":0.7}
+            size_hint:0.8, 0.2
+            text: "Created: "
+            color:"#900C3F"
+            font_name:"txt_font"
+            font_size: (root.width**2 + root.height**2) / 14**4
+
+        Button:
+
+            ### Log button ###
+            pos_hint:{"x":0.05, "y": 0.85}
+            size_hint:0.15,0.1
+            text: "Log Out"
+            font_size: (root.width**2 + root.height**2) / 14**4
+            font_name:"txt_font"
+            color: "#581845"
+            background_color: '#DAF7A6'
+            background_normal: ""
+            on_release:
+                root.manager.transition.direction = "down"
+                root.logOut()
+
+        Button:
+            ### Create Backup button ###
+            pos_hint:{"x":0.42, "y": 0.4}
+            size_hint:0.15,0.1
+            text: "Create New Backup"
+            font_size: (root.width**2 + root.height**2) / 14**4
+            font_name:"txt_font"
+            color: "#581845"
+            background_color: '#DAF7A6'
+            background_normal: ""
+            on_release:
+                root.create_backup_zip()  
+
+        Button:
+            ### Get Backup button ###
+            pos_hint:{"x":0.42, "y": 0.25}
+            size_hint:0.15,0.1
+            text: "Get Backup"
+            font_size: (root.width**2 + root.height**2) / 14**4
+            font_name:"txt_font"
+            color: "#581845"
+            background_color: '#DAF7A6'
+            background_normal: ""
+            on_release:
+                root.get_backup_zip()   
+
+        Button:
+            ### Change Password button ###
+            pos_hint:{"x":0.42, "y": 0.1}
+            size_hint:0.15,0.1
+            text: "Change Password"
+            font_size: (root.width**2 + root.height**2) / 14**4
+            font_name:"txt_font"
+            color: "#581845"
+            background_color: '#DAF7A6'
+            background_normal: ""
+            on_release:
+                root.manager.transition.direction = "up"
+                root.changePassword()   
+
+<ChangePassword>:
+
+    old_password: old_password
+
+    password: new_pass
+
+    FloatLayout:
+
+        canvas:
+            Color:
+                rgb: utils.get_color_from_hex('#DAF7A6')
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+        #AsyncImage:
+        #    source: 'D:\\DiskOnKeyProj\\br.png'
+        #    pos: self.pos
+        #    size: root.size
+        #    allow_stretch: True
+        #    keep_ratio: False
+            
+        Label:
+            ### Title Label ###
+            text:"Change My Password "
+            font_size: (root.width**2 + root.height**2) / 13**4
+            pos_hint: {"center_x":0.5, "center_y":0.9}
+            size_hint: 0.8, 0.8
+            color: "#581845"
+            font_name:"txt_font"
+
+        Label:
+            ### Email Label ###
+            text:"Old Password: "
+            font_size: (root.width**2 + root.height**2) / 13**4
+            size_hint: 0.2, 0.15
+            pos_hint: {"x":0.15, "top":0.7}
+            color: "#900C3F"
+            font_name:"txt_font"
+
+        TextInput:
+            ### old_password Input Box ###
+            id: old_password
+            font_size: (root.width**2 + root.height**2) / 14**4
+            multiline: False
+            padding_y:(10,10)
+            pos_hint: {"x": 0.4 , "top":0.665}
+            size_hint: 0.5, 0.08
+            font_name:"txt_font"
+            password:True
+            cursor_color: "#581845"
+            background_color: '#DAF7A6'
+            background_normal: ""
+
+        Label:
+            ### Password Label ###
+            text:"New Password: "
+            font_size: (root.width**2 + root.height**2) / 13**4
+            pos_hint: {"x":0.15, "top":0.5}
+            size_hint: 0.2, 0.15
+            color:"#900C3F"
+            font_name:"txt_font"
+
+        TextInput:
+            ### Password Input Box ###
+            id: new_pass
+            font_size: (root.width**2 + root.height**2) / 14**4
+            multiline: False
+            padding_y:(10,10)
+            password:True
+            pos_hint: {"x": 0.4 , "top":0.465}
+            size_hint: 0.5, 0.08
+            font_name:"txt_font"
+            cursor_color: "#581845"
+            background_color: '#DAF7A6'
+            background_normal: ""
+
+        Button:
+            ### Login Button ###
+            pos_hint:{"center_x":0.5,"y":0.1}
+            size_hint: 0.2, 0.05
+            font_size: 28
+            font_name:"txt_font"
+            text: "Change Password"
+            color: "#581845"
+            background_color: '#DAF7A6'
+            background_normal: ""
+            on_release:
+                root.manager.transition.direction = "down"
+                root.changepassbtn()
+
+        Button:
+             ### Keep old password Button ###
+            pos_hint:{"center_x":0.5,"y":0.2}
+            size_hint: 0.5, 0.05
+            font_size: 22
+            font_name:"txt_font"
+            text: "Want to keep the old password? click here"
+            color: "#581845"
+            background_color: '#DAF7A6'
+            background_normal: ""
+            
+            on_release:
+                root.manager.transition.direction = "down"
+                root.back_to_main()
